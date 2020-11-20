@@ -1,0 +1,18 @@
+ String URL ="http://dummyrestapiexample.com/api/v1/employee/1";
+    String ws_method_name = "getManagerListByRoleID";
+    String WS_METHOD_PARAMS = "";
+
+    HttpClient httpClient = new DefaultHttpClient();
+    HttpContext httpContext = new BasicHttpContext();
+
+    HttpGet httpGet = new HttpGet(URL + ws_method_name + WS_METHOD_PARAMS);
+    String text = null;
+
+    try {
+        HttpResponse httpResponse = httpClient
+                .execute(httpGet, httpContext);
+        HttpEntity entity = httpResponse.getEntity();
+        text = getASCIIContentFromEntity(entity);
+        }catch(Exception e){
+                e.printStackTrace();
+        }
